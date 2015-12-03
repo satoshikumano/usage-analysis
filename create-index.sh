@@ -25,6 +25,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects/[a-zA-Z0-9._-]{1,100}$",
           "replacement" : "app_object_id"
         },
+        "path_filter_app_bucket_query" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/query$",
+          "replacement" : "app_bucket_query"
+        },
         "path_filter_user_object" : {
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/users\/[a-zA-Z0-9._-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects$",
@@ -34,6 +39,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/users\/[a-zA-Z0-9._-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects/[a-zA-Z0-9._-]{1,100}$",
           "replacement" : "user_object_id"
+        },
+        "path_filter_user_bucket_query" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/users\/[a-zA-Z0-9._-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/query$",
+          "replacement" : "user_bucket_query"
         },
         "path_filter_group_object" : {
           "type":"pattern_replace",
@@ -45,6 +55,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/groups\/[a-zA-Z0-9._-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects/[a-zA-Z0-9._-]{1,100}$",
           "replacement" : "group_object_id"
         },
+        "path_filter_group_bucket_query" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/groups\/[a-zA-Z0-9._-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/query$",
+          "replacement" : "group_bucket_query"
+        },
 
         "path_filter_thing_object" : {
           "type":"pattern_replace",
@@ -55,6 +70,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/things\/[a-zA-Z0-9._:-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects/[a-zA-Z0-9._-]{1,100}$",
           "replacement" : "thing_object_id"
+        },
+        "path_filter_thing_bucket_query" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/things\/[a-zA-Z0-9._:-]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/query",
+          "replacement" : "thing_bucket_query"
         },
 
         "path_filter_user" : {
@@ -292,7 +312,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "path_filter_thing_status",
             "path_filter_acl",
             "path_filter_object_body",
-            "path_filter_app"
+            "path_filter_app",
+            "path_filter_app_bucket_query",
+            "path_filter_user_bucket_query",
+            "path_filter_group_bucket_query",
+            "path_filter_thing_bucket_query"
           ]
         }
       }

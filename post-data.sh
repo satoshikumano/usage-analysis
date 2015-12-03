@@ -87,5 +87,13 @@ curl -s -XPOST "http://$HOST_NAME/$INDEX/$TYPE/_bulk" --data-binary \
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/buckets/mybucket/objects/1234/body" }
 { "create" : { "_id" : "44" } }
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234" }
+{ "create" : { "_id" : "45" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/buckets/mybucket/query" }
+{ "create" : { "_id" : "46" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/users/1234/buckets/mybucket/query" }
+{ "create" : { "_id" : "47" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/groups/1234/buckets/mybucket/query" }
+{ "create" : { "_id" : "48" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/things/1234/buckets/mybucket/query" }
 '
 # vim: set sw=2 sts=2:
