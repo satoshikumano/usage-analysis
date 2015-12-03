@@ -233,7 +233,7 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
         "path_filter_app" : {
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}$",
-          "replacement" : "object_body"
+          "replacement" : "app"
         }
       },
       "analyzer" : {
@@ -291,7 +291,8 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "path_filter_thing_id",
             "path_filter_thing_status",
             "path_filter_acl",
-            "path_filter_object_body"
+            "path_filter_object_body",
+            "path_filter_app"
           ]
         }
       }
