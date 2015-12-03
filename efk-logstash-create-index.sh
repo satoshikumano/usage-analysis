@@ -1,6 +1,6 @@
-curl -XPUT 'https://$HOSTNAME/_template/logstash-2015' -d '
+curl -XPUT 'https://$HOST_NAME/_template/$TEMPLATE_NAME' -d '
 {
-  "template" : "logstash-*",
+  "template" : "$INDEX_PATTERN",
   "settings" : {
     "index.refresh_interval" : "60s",
     "analysis" : {
@@ -227,6 +227,12 @@ curl -XPUT 'https://$HOSTNAME/_template/logstash-2015' -d '
         "path_filter_object_body" : {
           "type":"pattern_replace",
           "pattern" : "^.*\/objects\/[a-zA-Z0-9._-]{1,100}\/body.*$",
+          "replacement" : "object_body"
+        },
+
+        "path_filter_app" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}$",
           "replacement" : "object_body"
         }
       },
