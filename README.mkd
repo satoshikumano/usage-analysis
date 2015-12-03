@@ -1,0 +1,13 @@
+## How to use
+
+create file named ./export.sh
+```
+export HOST_NAME=10.5.2.119:9200 #change it with yours.
+export TEMPLATE_NAME=template_mytest #change it with yours.
+export INDEX=mytest # change it with yours.
+export TYPE=fluentd
+```
+
+```sh
+source export.sh
+```
