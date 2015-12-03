@@ -23,5 +23,7 @@ replace mytest with your index pattern.
 ```
 
 ### Update/ Create index and import data.
+```sh
 sh delete-index.sh && create-index.sh && post-data.sh
+```
 

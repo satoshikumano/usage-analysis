@@ -85,5 +85,7 @@ curl -s -XPOST "http://$HOST_NAME/$INDEX/$TYPE/_bulk" --data-binary \
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/buckets/mybucket/objects/1234/acl/SUBJECT/PRINCIPAL" }
 { "create" : { "_id" : "43" } }
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/buckets/mybucket/objects/1234/body" }
+{ "create" : { "_id" : "44" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234" }
 '
 # vim: set sw=2 sts=2:
