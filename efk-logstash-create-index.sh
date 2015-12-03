@@ -1,6 +1,6 @@
-curl -XPUT 'https://$HOST_NAME/_template/$TEMPLATE_NAME' -d '
+curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
 {
-  "template" : "$INDEX_PATTERN",
+  "template" : "mytest",
   "settings" : {
     "index.refresh_interval" : "60s",
     "analysis" : {
