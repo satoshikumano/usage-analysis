@@ -99,5 +99,7 @@ curl -s -XPOST "http://$HOST_NAME/$INDEX/$TYPE/_bulk" --data-binary \
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/analytics/1234/data" }
 { "create" : { "_id" : "50" } }
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/analytics/events" }
+{ "create" : { "_id" : "51" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/server-code/versions/current/myfunc" }
 '
 # vim: set sw=2 sts=2:

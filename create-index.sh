@@ -15,6 +15,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "pattern":"^sn=[a-zA-Z]{1,10};sv=([a-zA-Z0-9.-]{1,20}).*$",
           "replacement":"$1"
         },
+        "sdk_pv_filter" : {
+          "type":"pattern_replace",
+          "pattern":"^sn=[a-zA-Z]{1,10};sv=[a-zA-Z0-9.-]{1,20};pv=([a-zA-Z0-9._-]{1,20})$",
+          "replacement":"$1"
+        },
         "path_filter_app_ojbect" : {
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects$",
@@ -265,6 +270,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/analytics\/events$",
           "replacement" : "analytics_event"
+        },
+        "path_filter_servercode" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/server-code\/.*$",
+          "replacement" : "servercode"
         }
 
       },
@@ -278,6 +288,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "type":"custom",
           "tokenizer":"keyword",
           "filter": ["sdk_version_filter"]
+        },
+        "sdk_pv_analyzer":{
+          "type":"custom",
+          "tokenizer":"keyword",
+          "filter": ["sdk_pv_filter"]
         },
         "path_analyzer":{
           "type" : "custom",
@@ -330,7 +345,8 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "path_filter_group_bucket_query",
             "path_filter_thing_bucket_query",
             "path_filter_analytics_data",
-            "path_filter_analytics_event"
+            "path_filter_analytics_event",
+            "path_filter_servercode"
           ]
         }
       }
@@ -351,6 +367,10 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "version" : {
               "type": "string",
               "analyzer" : "sdk_version_analyzer"
+            },
+            "pv" : {
+              "type": "string",
+              "analyzer" : "sdk_pv_analyzer"
             }
           }
         },
