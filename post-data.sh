@@ -95,5 +95,9 @@ curl -s -XPOST "http://$HOST_NAME/$INDEX/$TYPE/_bulk" --data-binary \
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/groups/1234/buckets/mybucket/query" }
 { "create" : { "_id" : "48" } }
 { "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/things/1234/buckets/mybucket/query" }
+{ "create" : { "_id" : "49" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/analytics/1234/data" }
+{ "create" : { "_id" : "50" } }
+{ "sdk":"sn=jss;sv=2.1.31", "path":"/apps/1234/analytics/events" }
 '
 # vim: set sw=2 sts=2:

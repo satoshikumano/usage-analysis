@@ -254,7 +254,19 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}$",
           "replacement" : "app"
+        },
+
+        "path_filter_analytics_data" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/analytics\/[a-zA-Z0-9._-]{1,64}\/data$",
+          "replacement" : "analytics_data"
+        },
+        "path_filter_analytics_event" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/analytics\/events$",
+          "replacement" : "analytics_event"
         }
+
       },
       "analyzer" : {
         "sdk_name_analyzer":{
@@ -316,7 +328,9 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "path_filter_app_bucket_query",
             "path_filter_user_bucket_query",
             "path_filter_group_bucket_query",
-            "path_filter_thing_bucket_query"
+            "path_filter_thing_bucket_query",
+            "path_filter_analytics_data",
+            "path_filter_analytics_event"
           ]
         }
       }
