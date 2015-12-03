@@ -1,6 +1,6 @@
 ## How to use
 
-create file named ./export.sh
+### create file named ./export.sh
 ```
 export HOST_NAME=10.5.2.119:9200 #change it with yours.
 export TEMPLATE_NAME=template_mytest #change it with yours.
@@ -8,6 +8,20 @@ export INDEX=mytest # change it with yours.
 export TYPE=fluentd
 ```
 
+### Export environment variables.
 ```sh
 source export.sh
 ```
+
+### Edit crete-index.sh
+replace mytest with your index pattern.
+```json
+{
+  "template" : "mytest",
+  ...
+}
+```
+
+### Update/ Create index and import data.
+sh delete-index.sh && create-index.sh && post-data.sh
+
