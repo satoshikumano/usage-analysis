@@ -20,6 +20,11 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "pattern":"^sn=[a-zA-Z]{1,10};sv=[a-zA-Z0-9.-]{1,20};pv=([a-zA-Z0-9._-]{1,20})$",
           "replacement":"$1"
         },
+        "sdk_pv_filter_exclude" : {
+          "type":"pattern_replace",
+          "pattern":"^sn=[a-zA-Z]{1,10};sv=[a-zA-Z0-9.-]{1,20}$",
+          "replacement":"-"
+        },
         "path_filter_app_ojbect" : {
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/buckets\/[a-zA-Z0-9._-]{1,64}\/objects$",
@@ -292,7 +297,7 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
         "sdk_pv_analyzer":{
           "type":"custom",
           "tokenizer":"keyword",
-          "filter": ["sdk_pv_filter"]
+          "filter": ["sdk_pv_filter", "sdk_pv_filter_exclude"]
         },
         "path_analyzer":{
           "type" : "custom",
