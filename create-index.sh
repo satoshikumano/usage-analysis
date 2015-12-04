@@ -280,8 +280,37 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-zA-Z0-9]{1,64}\/server-code\/.*$",
           "replacement" : "servercode"
+        },
+        "path_normalization_filter_apps" : {
+          "type":"pattern_replace",
+          "pattern" : "^\/apps\/[a-z0-9]{8}",
+          "replacement" : "/apps/\\${appId}"
+        },
+        "path_normalization_filter_groups" : {
+          "type":"pattern_replace",
+          "pattern" : "\/groups\/[a-zA-Z0-9._-]{1,64}",
+          "replacement" : "/groups/\\${groupId}"
+        },
+        "path_normalization_filter_users" : {
+          "type":"pattern_replace",
+          "pattern" : "\/users\/[a-zA-Z0-9._-]{1,64}",
+          "replacement" : "/users/\\${userId}"
+        },
+        "path_normalization_filter_things" : {
+          "type":"pattern_replace",
+          "pattern" : "\/things\/[a-zA-Z0-9._-]{1,64}",
+          "replacement" : "/things/\\${thigId}"
+        },
+        "path_normalization_filter_analytics" : {
+          "type":"pattern_replace",
+          "pattern" : "\/analytics\/[a-zA-Z0-9._-]{1,64}",
+          "replacement" : "/analytics/\\${analyticsId}"
+        },
+        "path_normalization_filter_objects" : {
+          "type":"pattern_replace",
+          "pattern" : "\/objects\/[a-zA-Z0-9._-]{1,64}",
+          "replacement" : "/objects/\\${objectId}"
         }
-
       },
       "analyzer" : {
         "sdk_name_analyzer":{
@@ -353,6 +382,18 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "path_filter_analytics_event",
             "path_filter_servercode"
           ]
+        },
+        "path_normalization_analyzer":{
+          "type" : "custom",
+          "tokenizer" : "keyword",
+          "filter" : [
+            "path_normalization_filter_apps",
+            "path_normalization_filter_groups",
+            "path_normalization_filter_users",
+            "path_normalization_filter_things",
+            "path_normalization_filter_analytics",
+            "path_normalization_filter_objects"
+          ]
         }
       }
     }
@@ -381,7 +422,16 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
         },
         "path" : {
           "type": "string",
-          "analyzer" : "path_analyzer"
+          "fields": {
+            "contents" : {
+              "type": "string",
+              "analyzer" : "path_analyzer"
+            },
+            "normalized" : {
+              "type": "string",
+              "analyzer" : "path_normalization_analyzer"
+            }
+          }
         }
       },
       "dynamic_templates":
