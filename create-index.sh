@@ -284,32 +284,37 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
         "path_normalization_filter_apps" : {
           "type":"pattern_replace",
           "pattern" : "^\/apps\/[a-z0-9]{8}",
-          "replacement" : "/apps/\\${appId}"
+          "replacement" : "/apps/ID"
         },
         "path_normalization_filter_groups" : {
           "type":"pattern_replace",
           "pattern" : "\/groups\/[a-zA-Z0-9._-]{1,64}",
-          "replacement" : "/groups/\\${groupId}"
+          "replacement" : "/groups/ID"
         },
         "path_normalization_filter_users" : {
           "type":"pattern_replace",
           "pattern" : "\/users\/[a-zA-Z0-9._-]{1,64}",
-          "replacement" : "/users/\\${userId}"
+          "replacement" : "/users/ID"
         },
         "path_normalization_filter_things" : {
           "type":"pattern_replace",
           "pattern" : "\/things\/[a-zA-Z0-9._-]{1,64}",
-          "replacement" : "/things/\\${thigId}"
+          "replacement" : "/things/ID"
         },
         "path_normalization_filter_analytics" : {
           "type":"pattern_replace",
           "pattern" : "\/analytics\/[a-zA-Z0-9._-]{1,64}",
-          "replacement" : "/analytics/\\${analyticsId}"
+          "replacement" : "/analytics/ID"
         },
         "path_normalization_filter_objects" : {
           "type":"pattern_replace",
           "pattern" : "\/objects\/[a-zA-Z0-9._-]{1,64}",
-          "replacement" : "/objects/\\${objectId}"
+          "replacement" : "/objects/ID"
+        },
+        "path_normalization_filter_buckets" : {
+          "type":"pattern_replace",
+          "pattern" : "\/buckets\/[a-zA-Z0-9._-]{1,64}",
+          "replacement" : "/buckets/ID"
         }
       },
       "analyzer" : {
@@ -392,7 +397,8 @@ curl -XPUT "http://$HOST_NAME/_template/$TEMPLATE_NAME" -d '
             "path_normalization_filter_users",
             "path_normalization_filter_things",
             "path_normalization_filter_analytics",
-            "path_normalization_filter_objects"
+            "path_normalization_filter_objects",
+            "path_normalization_filter_buckets"
           ]
         }
       }
